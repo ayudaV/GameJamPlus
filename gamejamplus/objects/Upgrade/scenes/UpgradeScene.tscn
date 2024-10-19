@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4n3e1nuo0c5r"]
+[gd_scene load_steps=10 format=3 uid="uid://c4n3e1nuo0c5r"]
 
 [ext_resource type="Script" path="res://objects/Upgrade/scripts/upgrade_scene.gd" id="1_7s0jy"]
 [ext_resource type="PackedScene" uid="uid://b755mo4nm8pfu" path="res://objects/train/scenes/Locomotive.tscn" id="1_542u5"]
+[ext_resource type="Theme" uid="uid://s78cm2ff6upf" path="res://utils/themes/main_theme.tres" id="3_c7wh4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4huxo"]
 albedo_color = Color(0.356584, 0.619104, 0.216854, 1)
@@ -44,7 +45,7 @@ environment = SubResource("Environment_t5fg3")
 curve = SubResource("Curve3D_gosqr")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-4.37111e-08, 0, -0.999994, 0, 1, 0, 0.999994, 0, -4.37111e-08, 0.000137298, 0, 0)
+transform = Transform3D(-4.37111e-08, 0, -0.999994, 0, 1, 0, 0.999994, 0, -4.37111e-08, -3.05185e-05, 0, 0)
 progress = 100.0
 
 [node name="Locomotive" parent="Path3D/PathFollow3D" instance=ExtResource("1_542u5")]
@@ -60,6 +61,7 @@ offset_left = 15.0
 offset_top = 514.12
 offset_right = 215.0
 offset_bottom = 584.12
+theme = ExtResource("3_c7wh4")
 text = "Coal"
 
 [node name="ButtonIronWagon" type="Button" parent="CanvasLayer"]
