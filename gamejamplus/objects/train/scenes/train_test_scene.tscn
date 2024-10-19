@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://pceciwgveeii"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4huxo"]
+albedo_color = Color(0.356584, 0.619104, 0.216854, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ys0mx"]
+material = SubResource("StandardMaterial3D_4huxo")
+size = Vector2(20, 20)
+
+[node name="PlayerTestScene" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_ys0mx")
