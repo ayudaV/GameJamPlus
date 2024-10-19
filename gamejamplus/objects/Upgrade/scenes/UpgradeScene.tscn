@@ -1,0 +1,95 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4n3e1nuo0c5r"]
+
+[ext_resource type="Script" path="res://objects/Upgrade/scripts/upgrade_scene.gd" id="1_7s0jy"]
+[ext_resource type="PackedScene" uid="uid://b755mo4nm8pfu" path="res://objects/train/scenes/Locomotive.tscn" id="1_542u5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4huxo"]
+albedo_color = Color(0.356584, 0.619104, 0.216854, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4s7gd"]
+material = SubResource("StandardMaterial3D_4huxo")
+size = Vector2(200, 200)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_llgko"]
+sky_top_color = Color(0.333228, 0.729993, 0.912915, 1)
+sky_horizon_color = Color(0.914882, 0.532218, 0.502685, 1)
+
+[sub_resource type="Sky" id="Sky_ekweg"]
+sky_material = SubResource("ProceduralSkyMaterial_llgko")
+
+[sub_resource type="Environment" id="Environment_t5fg3"]
+background_mode = 2
+sky = SubResource("Sky_ekweg")
+
+[sub_resource type="Curve3D" id="Curve3D_gosqr"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -100, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[node name="UpgradeScene" type="Node3D"]
+script = ExtResource("1_7s0jy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_4s7gd")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999879, 0.0155676, 0, -0.0155676, 0.999879, 0.867781, 4.64086, 23.658)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_t5fg3")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_gosqr")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-4.37111e-08, 0, -0.999994, 0, 1, 0, 0.999994, 0, -4.37111e-08, 0.000137298, 0, 0)
+progress = 100.0
+
+[node name="Locomotive" parent="Path3D/PathFollow3D" instance=ExtResource("1_542u5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ButtonCoalWagon" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.06
+anchor_bottom = 0.06
+offset_left = 15.0
+offset_top = 514.12
+offset_right = 215.0
+offset_bottom = 584.12
+text = "Coal"
+
+[node name="ButtonIronWagon" type="Button" parent="CanvasLayer"]
+offset_left = 935.0
+offset_top = 553.0
+offset_right = 1135.0
+offset_bottom = 623.0
+
+[node name="ButtonSoyWagon" type="Button" parent="CanvasLayer"]
+offset_left = 705.0
+offset_top = 553.0
+offset_right = 905.0
+offset_bottom = 623.0
+
+[node name="ButtonFuelWagon" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.18
+anchor_bottom = 0.039
+offset_left = 475.0
+offset_top = 553.0
+offset_right = 467.64
+offset_bottom = 597.728
+
+[node name="ButtonAnimalsWagon" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.024
+anchor_bottom = 0.045
+offset_left = 245.0
+offset_top = 553.0
+offset_right = 417.352
+offset_bottom = 593.84
+
+[connection signal="button_up" from="CanvasLayer/ButtonCoalWagon" to="." method="_on_button_button_up"]

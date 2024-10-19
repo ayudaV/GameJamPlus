@@ -1,13 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://pceciwgveeii"]
+[gd_scene load_steps=8 format=3 uid="uid://pceciwgveeii"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4huxo"]
+[ext_resource type="PackedScene" uid="uid://b755mo4nm8pfu" path="res://objects/train/scenes/Locomotive.tscn" id="1_7g1jj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqokf"]
 albedo_color = Color(0.356584, 0.619104, 0.216854, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ys0mx"]
-material = SubResource("StandardMaterial3D_4huxo")
-size = Vector2(20, 20)
+material = SubResource("StandardMaterial3D_rqokf")
+size = Vector2(200, 200)
 
-[node name="PlayerTestScene" type="Node3D"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lac1m"]
+sky_top_color = Color(0.333228, 0.729993, 0.912915, 1)
+sky_horizon_color = Color(0.914882, 0.532218, 0.502685, 1)
+
+[sub_resource type="Sky" id="Sky_mkx8f"]
+sky_material = SubResource("ProceduralSkyMaterial_lac1m")
+
+[sub_resource type="Environment" id="Environment_4j617"]
+background_mode = 2
+sky = SubResource("Sky_mkx8f")
+
+[sub_resource type="Curve3D" id="Curve3D_q318d"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -100, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[node name="TrainTestScene" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_ys0mx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999879, 0.0155676, 0, -0.0155676, 0.999879, 0.867781, 4.64086, 23.658)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4j617")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_q318d")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 100, 0, 0)
+progress = 200.0
+
+[node name="Locomotive" parent="Path3D/PathFollow3D" instance=ExtResource("1_7g1jj")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
