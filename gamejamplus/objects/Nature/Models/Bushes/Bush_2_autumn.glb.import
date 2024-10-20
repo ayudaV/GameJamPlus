@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://6ior3p07riem"
-path="res://.godot/imported/oil_container.glb-ee59cc6a57408751968e4f2f6eff0945.scn"
+uid="uid://cccsfhwiwm5oo"
+path="res://.godot/imported/Bush_2_autumn.glb-5533bd25bcb36a54af52ebed28203658.scn"
 
 [deps]
 
-source_file="res://objects/train/resources/oil_container.glb"
-dest_files=["res://.godot/imported/oil_container.glb-ee59cc6a57408751968e4f2f6eff0945.scn"]
+source_file="res://objects/Nature/Models/Bushes/Bush_2_autumn.glb"
+dest_files=["res://.godot/imported/Bush_2_autumn.glb-5533bd25bcb36a54af52ebed28203658.scn"]
 
 [params]
 

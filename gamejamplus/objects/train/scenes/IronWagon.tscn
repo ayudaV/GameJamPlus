@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0i5evn3rxlym"]
+
+[ext_resource type="Script" path="res://objects/train/scripts/wagon.gd" id="1_q8421"]
+[ext_resource type="PackedScene" uid="uid://n1dh6a0lyjpo" path="res://objects/train/resources/iron_container.glb" id="2_oydxs"]
+
+[node name="IronWagon" type="PathFollow3D"]
+script = ExtResource("1_q8421")
+
+[node name="iron_container" parent="." instance=ExtResource("2_oydxs")]

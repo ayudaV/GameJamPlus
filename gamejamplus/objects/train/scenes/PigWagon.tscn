@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://buqx6ll6vy6pv"]
+
+[ext_resource type="PackedScene" uid="uid://ctiajg24uldjj" path="res://objects/train/resources/pig_container.glb" id="1_dvyuu"]
+[ext_resource type="Script" path="res://objects/train/scripts/wagon.gd" id="1_pk5ol"]
+
+[node name="PigWagon" type="PathFollow3D"]
+script = ExtResource("1_pk5ol")
+
+[node name="pig_container" parent="." instance=ExtResource("1_dvyuu")]

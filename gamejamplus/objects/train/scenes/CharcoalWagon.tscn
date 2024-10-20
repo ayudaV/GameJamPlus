@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bejkvswy41ixg"]
+
+[ext_resource type="Script" path="res://objects/train/scripts/wagon.gd" id="1_8wvf0"]
+[ext_resource type="PackedScene" uid="uid://cxli68a5l22mr" path="res://objects/train/resources/charcoal_container.glb" id="1_hi3mf"]
+
+[node name="CharcoalWagon" type="PathFollow3D"]
+script = ExtResource("1_8wvf0")
+
+[node name="charcoal_container" parent="." instance=ExtResource("1_hi3mf")]

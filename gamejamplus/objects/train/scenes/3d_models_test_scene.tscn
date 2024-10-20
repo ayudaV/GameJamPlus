@@ -1,20 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://jhx402mueqyh"]
+[gd_scene load_steps=6 format=3 uid="uid://jhx402mueqyh"]
 
 [ext_resource type="PackedScene" uid="uid://cxli68a5l22mr" path="res://objects/train/resources/charcoal_container.glb" id="1_tsqbx"]
-[ext_resource type="PackedScene" uid="uid://6ior3p07riem" path="res://objects/train/resources/oil_container.glb" id="2_k36u6"]
-[ext_resource type="PackedScene" uid="uid://b76bada0ckwam" path="res://objects/train/resources/train.glb" id="3_tqltj"]
+[ext_resource type="PackedScene" uid="uid://6ior3p07riem" path="res://objects/train/resources/fuel_container.glb" id="2_k36u6"]
+[ext_resource type="PackedScene" uid="uid://ft2x0bg8wkb5" path="res://objects/train/resources/locomotive.glb" id="4_prmxu"]
 [ext_resource type="PackedScene" uid="uid://ctiajg24uldjj" path="res://objects/train/resources/pig_container.glb" id="4_xq0ur"]
+[ext_resource type="PackedScene" uid="uid://n1dh6a0lyjpo" path="res://objects/train/resources/iron_container.glb" id="5_bc7bm"]
 
 [node name="3dModelsTestScene" type="Node3D"]
 
 [node name="charcoal_container" parent="." instance=ExtResource("1_tsqbx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0113525, 0, 11.7531)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
 
 [node name="oil_container" parent="." instance=ExtResource("2_k36u6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0113525, 0, -19.2135)
-
-[node name="train" parent="." instance=ExtResource("3_tqltj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0113525, 0, 1.58061)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
 
 [node name="pig_container" parent="." instance=ExtResource("4_xq0ur")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55786, 0, -8.41124)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, 0)
+
+[node name="locomotive" parent="." instance=ExtResource("4_prmxu")]
+
+[node name="iron_container" parent="." instance=ExtResource("5_bc7bm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 0)

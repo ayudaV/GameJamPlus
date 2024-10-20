@@ -1,6 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://pceciwgveeii"]
+[gd_scene load_steps=13 format=3 uid="uid://pceciwgveeii"]
 
 [ext_resource type="PackedScene" uid="uid://b755mo4nm8pfu" path="res://objects/train/scenes/Locomotive.tscn" id="1_7g1jj"]
+[ext_resource type="PackedScene" uid="uid://bejkvswy41ixg" path="res://objects/train/scenes/CharcoalWagon.tscn" id="1_57h5c"]
+[ext_resource type="PackedScene" uid="uid://c8kr36j2tksqb" path="res://objects/rail/scenes/travel_01.tscn" id="2_7c8ap"]
+[ext_resource type="PackedScene" uid="uid://bg3pmv5s6lstc" path="res://objects/train/scenes/FuelWagon.tscn" id="2_43636"]
+[ext_resource type="PackedScene" uid="uid://buqx6ll6vy6pv" path="res://objects/train/scenes/PigWagon.tscn" id="4_cne6y"]
+[ext_resource type="Script" path="res://objects/train/scripts/train_controller.gd" id="5_caoqm"]
+[ext_resource type="PackedScene" uid="uid://d0i5evn3rxlym" path="res://objects/train/scenes/IronWagon.tscn" id="7_jlb6r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rqokf"]
 albedo_color = Color(0.356584, 0.619104, 0.216854, 1)
@@ -12,38 +18,44 @@ size = Vector2(200, 200)
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lac1m"]
 sky_top_color = Color(0.333228, 0.729993, 0.912915, 1)
 sky_horizon_color = Color(0.914882, 0.532218, 0.502685, 1)
+ground_horizon_color = Color(0.457889, 0.249456, 0.266507, 1)
 
-[sub_resource type="Sky" id="Sky_mkx8f"]
+[sub_resource type="Sky" id="Sky_l72er"]
 sky_material = SubResource("ProceduralSkyMaterial_lac1m")
 
 [sub_resource type="Environment" id="Environment_4j617"]
 background_mode = 2
-sky = SubResource("Sky_mkx8f")
-
-[sub_resource type="Curve3D" id="Curve3D_q318d"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -100, 0, 0, 0, 0, 0, 0, 0, 0, 100, 0, 0),
-"tilts": PackedFloat32Array(0, 0)
-}
-point_count = 2
+sky = SubResource("Sky_l72er")
 
 [node name="TrainTestScene" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_ys0mx")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999879, 0.0155676, 0, -0.0155676, 0.999879, 0.867781, 4.64086, 23.658)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4j617")
 
-[node name="Path3D" type="Path3D" parent="."]
-curve = SubResource("Curve3D_q318d")
+[node name="TrainController" type="Node" parent="." node_paths=PackedStringArray("path")]
+script = ExtResource("5_caoqm")
+path = NodePath("../Rail")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 100, 0, 0)
-progress = 200.0
+[node name="Rail" parent="." instance=ExtResource("2_7c8ap")]
 
-[node name="Locomotive" parent="Path3D/PathFollow3D" instance=ExtResource("1_7g1jj")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+[node name="CharcoalWagon" parent="Rail" instance=ExtResource("1_57h5c")]
+transform = Transform3D(0.746481, -0.0267948, -0.664867, 9.31323e-10, 0.999189, -0.0402683, 0.665407, 0.0300595, 0.745876, -108.283, -2.89453, 188.391)
+
+[node name="FuelWagon" parent="Rail" instance=ExtResource("2_43636")]
+transform = Transform3D(0.701428, -0.034573, -0.711901, -0.00300153, 0.998671, -0.0514571, 0.712734, 0.0382303, 0.700392, -99.5427, -2.22845, 180.197)
+progress = 12.0
+
+[node name="Locomotive" parent="Rail" instance=ExtResource("1_7g1jj")]
+transform = Transform3D(0.913137, -0.00630463, -0.407604, 0.00482522, 0.999978, -0.00465745, 0.407625, 0.00228611, 0.913147, -77.5262, -1.14853, 152.003)
+progress = 48.0
+
+[node name="PigWagon" parent="Rail" instance=ExtResource("4_cne6y")]
+transform = Transform3D(0.740902, -0.027758, -0.671039, -0.000342305, 0.99913, -0.0417076, 0.671613, 0.031131, 0.740247, -91.2265, -1.66543, 171.566)
+progress = 24.0
+
+[node name="IronWagon" parent="Rail" instance=ExtResource("7_jlb6r")]
+transform = Transform3D(0.805526, -0.0166008, -0.592328, 0.00301466, 0.999709, -0.0239186, 0.592552, 0.0174814, 0.805342, -83.5799, -1.25784, 162.334)
+progress = 36.0

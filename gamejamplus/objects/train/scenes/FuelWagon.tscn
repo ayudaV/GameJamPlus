@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg3pmv5s6lstc"]
+
+[ext_resource type="PackedScene" uid="uid://6ior3p07riem" path="res://objects/train/resources/fuel_container.glb" id="1_1pfvd"]
+[ext_resource type="Script" path="res://objects/train/scripts/wagon.gd" id="1_kvlvd"]
+
+[node name="FuelWagon" type="PathFollow3D"]
+script = ExtResource("1_kvlvd")
+
+[node name="fuel_container" parent="." instance=ExtResource("1_1pfvd")]
