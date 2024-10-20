@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfbk1e1pjf84d"]
+
+[ext_resource type="Texture2D" uid="uid://cx268n75j1lak" path="res://addons/godot-prototype-texture/Vector/grid_512x512/grid_blue_512x512.svg" id="1_x46kg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r0crk"]
+albedo_color = Color(0.3273, 0.392841, 0.52745, 1)
+albedo_texture = ExtResource("1_x46kg")
+uv1_triplanar = true
+uv2_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_2blqm"]
+material = SubResource("StandardMaterial3D_r0crk")
+size = Vector3(20, 0.5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sgo8y"]
+size = Vector3(20, 0.5, 20)
+
+[node name="TestScene" type="Node3D"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("BoxMesh_2blqm")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_sgo8y")
