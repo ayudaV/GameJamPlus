@@ -8,8 +8,7 @@ extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var locomotive_instance = locomotive.instantiate()
-	var player_instance = player.instantiate()
-	locomotive_instance.add_child(player_instance)
-	GameController.load_wagons(rail)
-	train_controller.speed = 30
+	locomotive_instance.player.enable_player()
+	GameController.add_wagon(locomotive_instance, rail)
+	train_controller.speed = 10
 	

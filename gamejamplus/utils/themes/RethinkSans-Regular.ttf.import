@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://cngdff25pfhd2"
-path="res://.godot/imported/RethinkSans-Regular.ttf-f8566a70718ae21ba2d2e31b74b8f4c7.fontdata"
+path="res://.godot/imported/RethinkSans-Regular.ttf-6c598feb47ce2580669c816ba60ba4c2.fontdata"
 
 [deps]
 
-source_file="res://ui/RethinkSans-Regular.ttf"
-dest_files=["res://.godot/imported/RethinkSans-Regular.ttf-f8566a70718ae21ba2d2e31b74b8f4c7.fontdata"]
+source_file="res://utils/themes/RethinkSans-Regular.ttf"
+dest_files=["res://.godot/imported/RethinkSans-Regular.ttf-6c598feb47ce2580669c816ba60ba4c2.fontdata"]
 
 [params]
 

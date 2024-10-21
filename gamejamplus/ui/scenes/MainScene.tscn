@@ -1,0 +1,66 @@
+[gd_scene load_steps=5 format=3 uid="uid://cspsng6vs5h1y"]
+
+[ext_resource type="Theme" uid="uid://s78cm2ff6upf" path="res://utils/themes/main_theme.tres" id="1_bvdlr"]
+[ext_resource type="Script" path="res://ui/scripts/main_scene.gd" id="1_nnx7h"]
+[ext_resource type="Theme" uid="uid://bltoshr6u67l0" path="res://utils/themes/title_theme.tres" id="2_mf4lt"]
+[ext_resource type="PackedScene" uid="uid://8ejxflrsniap" path="res://objects/stations/scenes/travel_test.tscn" id="2_v7fqn"]
+
+[node name="Ui" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nnx7h")
+play_scene = ExtResource("2_v7fqn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="ButtonPlay" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.06
+anchor_bottom = 0.06
+offset_left = 426.0
+offset_top = 223.12
+offset_right = 726.0
+offset_bottom = 293.12
+theme = ExtResource("1_bvdlr")
+text = "Play"
+
+[node name="ButtonQuit" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.06
+anchor_bottom = 0.06
+offset_left = 426.0
+offset_top = 323.12
+offset_right = 726.0
+offset_bottom = 393.12
+theme = ExtResource("1_bvdlr")
+text = "Quit"
+
+[node name="ButtonDisableSound" type="CheckButton" parent="CanvasLayer"]
+offset_left = 1095.0
+offset_top = 605.0
+offset_right = 1145.0
+offset_bottom = 635.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 969.0
+offset_top = 605.0
+offset_right = 1095.0
+offset_bottom = 631.0
+text = "Disable Sound"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CanvasLayer"]
+offset_left = 368.0
+offset_top = 102.0
+offset_right = 780.0
+offset_bottom = 237.0
+theme = ExtResource("2_mf4lt")
+text = "Zen Rails"
+
+[connection signal="button_up" from="CanvasLayer/ButtonPlay" to="." method="_on_button_play_button_up"]
+[connection signal="pressed" from="CanvasLayer/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="button_up" from="CanvasLayer/ButtonDisableSound" to="." method="_on_button_disable_sound_button_up"]

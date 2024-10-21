@@ -1,7 +1,9 @@
-[gd_scene load_steps=39 format=4 uid="uid://b755mo4nm8pfu"]
+[gd_scene load_steps=41 format=4 uid="uid://b755mo4nm8pfu"]
 
 [ext_resource type="Script" path="res://objects/train/scripts/locomotive.gd" id="1_1g2c2"]
 [ext_resource type="Script" path="res://objects/train/scripts/lever.gd" id="2_ll3fb"]
+[ext_resource type="AudioStream" uid="uid://c42nw31jnkqh4" path="res://objects/train/resources/train_sound_2.ogg" id="3_lyjkd"]
+[ext_resource type="PackedScene" uid="uid://uo4iwghflmhh" path="res://objects/player/scenes/player.tscn" id="4_xttkv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1b1l"]
 resource_name = "Black"
@@ -785,9 +787,10 @@ shadow_mesh = SubResource("ArrayMesh_64nvk")
 height = 1.395
 radius = 0.1
 
-[node name="Locomotive" type="PathFollow3D" node_paths=PackedStringArray("animationPLayer")]
+[node name="Locomotive" type="PathFollow3D" node_paths=PackedStringArray("animationPLayer", "player")]
 script = ExtResource("1_1g2c2")
 animationPLayer = NodePath("AnimationPlayer")
+player = NodePath("Player")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.85934, -7.16481)
@@ -804,7 +807,7 @@ bones/0/name = "rotation_bone"
 bones/0/parent = -1
 bones/0/rest = Transform3D(0.999798, -0.0200822, 2.57223e-07, 0.0200822, 0.999798, -2.38895e-08, -2.56691e-07, 2.90503e-08, 1, 2.60596, 0.734279, -1.13149e-07)
 bones/0/enabled = true
-bones/0/position = Vector3(2.60596, 0.734279, -1.13149e-07)
+bones/0/position = Vector3(2.60604, 0.726827, -1.13399e-07)
 bones/0/rotation = Quaternion(1.32356e-08, 1.28485e-07, 0.0100416, 0.99995)
 bones/0/scale = Vector3(1, 1, 1)
 bones/1/name = "rod"
@@ -812,14 +815,14 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(0.029452, -0.998646, -0.042871, 0.980224, 0.0204589, 0.19683, -0.195686, -0.0478202, 0.9795, 2.6077e-08, 0.520308, -5.32907e-15)
 bones/1/enabled = true
 bones/1/position = Vector3(2.6077e-08, 0.520308, -5.32907e-15)
-bones/1/rotation = Quaternion(-0.0858678, 0.0536354, 0.694548, 0.712287)
+bones/1/rotation = Quaternion(-0.0858677, 0.0536354, 0.694548, 0.712287)
 bones/1/scale = Vector3(1, 1, 1)
 bones/2/name = "rod2"
 bones/2/parent = 1
 bones/2/rest = Transform3D(0.967349, -0.253446, -0.000439184, 0.253446, 0.967344, 0.00340734, -0.000438735, -0.0034074, 0.999994, -4.79631e-08, 2.90612, -2.79397e-09)
 bones/2/enabled = true
 bones/2/position = Vector3(-4.79631e-08, 2.90612, -2.79397e-09)
-bones/2/rotation = Quaternion(-0.00171777, -1.13343e-07, 0.12777, 0.991802)
+bones/2/rotation = Quaternion(0.00235051, 0.000489762, 0.108005, 0.994147)
 bones/2/scale = Vector3(1, 1, 1)
 
 [node name="DriveRod" type="MeshInstance3D" parent="Armature/Skeleton3D"]
@@ -902,6 +905,12 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Lever"]
 shape = SubResource("CylinderShape3D_285pw")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_lyjkd")
+autoplay = true
+
+[node name="Player" parent="." instance=ExtResource("4_xttkv")]
 
 [connection signal="mouse_entered" from="Lever" to="Lever" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Lever" to="Lever" method="_on_mouse_exited"]

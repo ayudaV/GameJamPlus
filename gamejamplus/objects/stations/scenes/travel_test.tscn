@@ -1,16 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://8ejxflrsniap"]
+[gd_scene load_steps=8 format=3 uid="uid://8ejxflrsniap"]
 
-[ext_resource type="Script" path="res://objects/stations/scripts/travel.gd" id="1_8dq5w"]
+[ext_resource type="Script" path="res://objects/stations/scripts/first_travel.gd" id="1_hsbt2"]
 [ext_resource type="PackedScene" uid="uid://c8kr36j2tksqb" path="res://objects/rail/scenes/travel_01.tscn" id="1_t1tlk"]
 [ext_resource type="PackedScene" uid="uid://b755mo4nm8pfu" path="res://objects/train/scenes/Locomotive.tscn" id="2_2saob"]
 [ext_resource type="PackedScene" uid="uid://dkransvcnjrvp" path="res://objects/terrain/scenes/terrain.tscn" id="2_o03hk"]
+[ext_resource type="PackedScene" uid="uid://uo4iwghflmhh" path="res://objects/player/scenes/player.tscn" id="3_vscoi"]
 [ext_resource type="Script" path="res://objects/train/scripts/train_controller.gd" id="3_y8xcl"]
+[ext_resource type="PackedScene" uid="uid://c4n3e1nuo0c5r" path="res://objects/Upgrade/scenes/UpgradeScene.tscn" id="7_qho05"]
 
 [node name="Travel" type="Node3D" node_paths=PackedStringArray("rail", "train_controller")]
-script = ExtResource("1_8dq5w")
+script = ExtResource("1_hsbt2")
 rail = NodePath("Rail")
 train_controller = NodePath("TrainController")
 locomotive = ExtResource("2_2saob")
+player = ExtResource("3_vscoi")
 
 [node name="Rail" parent="." instance=ExtResource("1_t1tlk")]
 
@@ -20,3 +23,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.15359, 0)
 [node name="TrainController" type="Node" parent="." node_paths=PackedStringArray("path")]
 script = ExtResource("3_y8xcl")
 path = NodePath("../Rail")
+upgrade_scene = ExtResource("7_qho05")

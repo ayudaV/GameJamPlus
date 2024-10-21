@@ -1,18 +1,19 @@
 [gd_scene load_steps=3 format=3 uid="uid://uo4iwghflmhh"]
 
-[ext_resource type="Script" path="res://objects/player/scripts/camera.gd" id="1_8o78a"]
+[ext_resource type="Script" path="res://objects/player/scripts/player.gd" id="1_8o78a"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0ic1k"]
-height = 4.0
+height = 2.36706
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.214, 1.55)
 script = ExtResource("1_8o78a")
+camera = NodePath("Camera3D")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.999981, 0.0010092, -0.00609545, 0, 0.986569, 0.163343, 0.00617843, -0.16334, 0.986551, 0, 4.214, 1.55)
 current = true
 fov = 70.4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.514, 1.55)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.881198, 0)
 shape = SubResource("CylinderShape3D_0ic1k")

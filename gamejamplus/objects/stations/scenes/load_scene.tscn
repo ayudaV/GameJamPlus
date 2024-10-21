@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdukyvbgg05u6"]
+
+[ext_resource type="PackedScene" uid="uid://b755mo4nm8pfu" path="res://objects/train/scenes/Locomotive.tscn" id="2_p3ixe"]
+[ext_resource type="PackedScene" uid="uid://c8kr36j2tksqb" path="res://objects/rail/scenes/travel_01.tscn" id="4_pqjo8"]
+[ext_resource type="PackedScene" uid="uid://bejkvswy41ixg" path="res://objects/train/scenes/CharcoalWagon.tscn" id="5_46f6c"]
+[ext_resource type="PackedScene" uid="uid://dkransvcnjrvp" path="res://objects/terrain/scenes/terrain.tscn" id="5_fmq3v"]
+[ext_resource type="PackedScene" uid="uid://bg3pmv5s6lstc" path="res://objects/train/scenes/FuelWagon.tscn" id="6_6aqwn"]
+[ext_resource type="Script" path="res://objects/train/scripts/train_controller.gd" id="6_6asgv"]
+[ext_resource type="PackedScene" uid="uid://d0i5evn3rxlym" path="res://objects/train/scenes/IronWagon.tscn" id="7_fep03"]
+[ext_resource type="PackedScene" uid="uid://buqx6ll6vy6pv" path="res://objects/train/scenes/PigWagon.tscn" id="8_h1b88"]
+
+[node name="LoadScene" type="Node3D"]
+
+[node name="Rail" parent="." instance=ExtResource("4_pqjo8")]
+
+[node name="CharcoalWagon" parent="Rail" instance=ExtResource("5_46f6c")]
+transform = Transform3D(0.701428, -0.034573, -0.711901, -0.00300153, 0.998671, -0.0514571, 0.712734, 0.0382303, 0.700392, -99.5427, -2.22845, 180.197)
+progress = 12.0
+
+[node name="FuelWagon" parent="Rail" instance=ExtResource("6_6aqwn")]
+transform = Transform3D(0.740902, -0.027758, -0.67104, -0.000342305, 0.999129, -0.0417077, 0.671613, 0.031131, 0.740248, -91.2265, -1.66543, 171.566)
+progress = 24.0
+
+[node name="IronWagon" parent="Rail" instance=ExtResource("7_fep03")]
+transform = Transform3D(0.805526, -0.0166008, -0.592328, 0.00301466, 0.999709, -0.0239186, 0.592552, 0.0174814, 0.805342, -83.5799, -1.25784, 162.334)
+progress = 36.0
+
+[node name="Locomotive" parent="Rail" instance=ExtResource("2_p3ixe")]
+transform = Transform3D(0.913137, -0.00630462, -0.407604, 0.00482522, 0.999977, -0.00465745, 0.407625, 0.00228611, 0.913147, -77.5262, -1.14853, 152.003)
+progress = 48.0
+
+[node name="PigWagon" parent="Rail" instance=ExtResource("8_h1b88")]
+transform = Transform3D(0.746481, -0.0267948, -0.664867, 9.31323e-10, 0.999189, -0.0402683, 0.665407, 0.0300595, 0.745876, -108.283, -2.89453, 188.391)
+
+[node name="Terrain" parent="." instance=ExtResource("5_fmq3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.15359, 0)
+
+[node name="TrainController" type="Node" parent="." node_paths=PackedStringArray("path")]
+script = ExtResource("6_6asgv")
+path = NodePath("../Rail")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.932419, 0.0590228, -0.356528, 8.56913e-09, 0.986572, 0.163326, 0.36138, 0.152288, -0.919898, -43.6586, 10.0298, -43.7396)

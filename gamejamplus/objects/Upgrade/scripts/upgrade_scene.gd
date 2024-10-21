@@ -10,17 +10,22 @@ extends Node3D
 @export var rail : Path3D
 @export var train_controller : Node
 
+const DESACELERATION = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	instantiate_wagon(locomotive)
+	GameController.wagons[0].player.disable_player()
 	GameController.load_wagons(rail)
-	train_controller.speed = 10
+	
+	train_controller.speed = 12
 
-
+func _process(delta: float) -> void:
+	if train_controller.speed > 0:
+		train_controller.speed -= delta * DESACELERATION
 
 func instantiate_wagon(wagon : PackedScene):
 	var wagon_instance = wagon.instantiate()
 	GameController.add_wagon(wagon_instance, rail)
+	train_controller.speed += DESACELERATION * 5
 
 func _on_button_button_up() -> void:
 	print("vagão de carvão adicionado") # Replace with function body.
